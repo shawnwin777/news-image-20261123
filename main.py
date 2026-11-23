@@ -1,34 +1,48 @@
-"""news-image-20261123 entry: copy the front-page image to /output/entry.png.
+#!/usr/bin/env python3
+"""The World in One Day -- 23 November 2026.
 
-Deterministic, standard library only, no network. The image is the
-newspaper front page "The World in One Day — 23 November 2026" held in
-this repository as entry.png.
+Deterministic entrypoint: copies the submitted front-page image
+(repo/entry.png) into the output directory given by the
+MAKEFUN_OUTPUT_DIR environment variable (default /output) as
+entry.png, and exits nonzero if anything goes wrong.
+
+Python standard library only; no network, no randomness.
 """
 
 import hashlib
 import os
 import shutil
-from pathlib import Path
+import sys
+
+SOURCE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "entry.png")
+OUTPUT_DIR = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+OUTPUT_FILE = os.path.join(OUTPUT_DIR, "entry.png")
 
 
-def sha256_of(path: Path) -> str:
+def sha256_file(path: str) -> str:
     digest = hashlib.sha256()
-    with path.open("rb") as handle:
+    with open(path, "rb") as handle:
         for chunk in iter(lambda: handle.read(65536), b""):
             digest.update(chunk)
     return digest.hexdigest()
 
 
-def main() -> None:
-    source = Path(__file__).resolve().parent / "entry.png"
-    out_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
-    out_dir.mkdir(parents=True, exist_ok=True)
-    destination = out_dir / "entry.png"
-    shutil.copyfile(source, destination)
-    # Self-verification: the output must be byte-identical to the source.
-    if sha256_of(source) != sha256_of(destination):
-        raise SystemExit("entry.png copy failed sha256 verification")
+def main() -> int:
+    if not os.path.isfile(SOURCE):
+        print(f"error: source image not found: {SOURCE}", file=sys.stderr)
+        return 1
+    try:
+        os.makedirs(OUTPUT_DIR, exist_ok=True)
+        shutil.copyfile(SOURCE, OUTPUT_FILE)
+    except OSError as exc:
+        print(f"error: failed to copy entry image: {exc}", file=sys.stderr)
+        return 1
+    if sha256_file(SOURCE) != sha256_file(OUTPUT_FILE):
+        print("error: sha256 mismatch after copy", file=sys.stderr)
+        return 1
+    print(f"wrote {OUTPUT_FILE}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

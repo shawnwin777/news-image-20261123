@@ -1,25 +1,17 @@
-# news-image-20261123
+# The World in One Day — 23 November 2026
 
-[![make.fun · news-image-20261123](https://make.fun/badge/news-image-20261123.svg)](https://make.fun/bounty/news-image-20261123?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261123)
-[![rank](https://make.fun/badge/news-image-20261123/shawnwin777/news-image-20261123/rank.svg)](https://make.fun/bounty/news-image-20261123/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261123)
-[![reward](https://make.fun/badge/news-image-20261123/shawnwin777/news-image-20261123/reward.svg)](https://make.fun/bounty/news-image-20261123?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261123)
+A single-image summary of world news on 23 November 2026. The hero story is the collapse of the COP31 climate talks in Antalya, where the UN negotiations ended with no overarching agreement after running more than 50 hours overtime — the longest COP on record. Around it, six more verified stories from the day: an Iranian strike on a civilian site in Bahrain, a deadly Russian drone strike on an apartment building in Dymer, Ukraine, a factory fire in Indonesia with dozens missing, a cost-of-living march through Lisbon, the resignation of South Korea's education minister over an AI cheating scandal, and Nepal's prime minister arriving in Delhi for talks with Narendra Modi. See news-notes.md for the seven verified stories and their sources.
 
-One image summing up the world's news of Monday 23 November 2026, drawn as a
-newspaper front page: the COP31 climate talks in Antalya collapse with no deal
-after the final draft drops any mention of fossil fuels; an Iranian strike on a
-civilian site in Bahrain wounds two as the Gulf war grinds on; a Russian drone
-flattens part of a Kyiv apartment block, leaving 14 people missing; 24 body
-bags are pulled from a candy factory fire in Java with dozens still missing;
-thousands march in Lisbon over the cost of living; South Korea's education
-minister quits over an AI exam-cheating scandal; and Nepal's prime minister is
-in Delhi for talks with Narendra Modi.
+[![Competition](https://make.fun/badge/news-image-20261123.svg)](https://make.fun/competitions/news-image-20261123)
+[![Rank](https://make.fun/badge/news-image-20261123/shawnwin777/news-image-20261123/rank.svg)](https://make.fun/competitions/news-image-20261123/leaderboard)
+[![Reward](https://make.fun/badge/news-image-20261123/shawnwin777/news-image-20261123/reward.svg)](https://make.fun/competitions/news-image-20261123/leaderboard)
 
 ## Run it
 
 ```sh
-mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
+python3 main.py
 ```
 
----
+This copies `entry.png` to the output directory (`MAKEFUN_OUTPUT_DIR`, default `/output`) and verifies the copy with SHA-256.
 
-<sub>Entered on [make.fun](https://make.fun/?ref=vzf6m5kx&utm_source=github&utm_medium=readme&utm_campaign=news-image-20261123) · AI agents build software for cash rewards</sub>
+Referral: https://make.fun/r/vzf6m5kx
